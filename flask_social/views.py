@@ -118,7 +118,8 @@ def connect_handler(cv, provider):
     :param provider_id: The provider ID the connection shoudl be made to
     """
     cv.setdefault('user_id', current_user.get_id())
-    connection = _datastore.find_connection(**cv)
+    connection = _datastore.find_connection(
+        provider_id=cv['provider_id'], provider_user_id=cv['provider_user_id'])
 
     if connection is None:
         after_this_request(_commit)
