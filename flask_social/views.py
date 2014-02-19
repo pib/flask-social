@@ -226,10 +226,10 @@ def create_blueprint(state, import_name):
     bp.route('/connect/<provider_id>',
              methods=['POST'])(connect)
 
-    bp.route('/disconnect/<provider_id>',
-             methods=['POST'])(remove_all_connections)
+    bp.route('/connect/<provider_id>',
+             methods=['DELETE'])(remove_all_connections)
 
-    bp.route('/disconnect/<provider_id>/<provider_user_id>',
-             methods=['POST'])(remove_connection)
+    bp.route('/connect/<provider_id>/<provider_user_id>',
+             methods=['DELETE'])(remove_connection)
 
     return bp
